@@ -1,0 +1,11 @@
+# Compiled files
+*.o
+*.exe
+*.out
+
+# Editor/OS junk
+.vscode/
+.DS_Store
+
+# Logs
+*.log
