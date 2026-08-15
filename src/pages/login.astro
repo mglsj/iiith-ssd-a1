@@ -1,0 +1,33 @@
+---
+import PageLayout from "@/layouts/PageLayout.astro";
+---
+
+<PageLayout>
+    <div class="w-screen h-full flex justify-center items-center flex-col">
+        <h1 class="text-3xl font-bold mb-4 text-center">Login</h1>
+        <form
+            id="loginForm"
+            class="p-8 rounded shadow-md w-full max-w-sm flex flex-col bg-gray-500"
+        >
+            <input
+                type="text"
+                name="username"
+                placeholder="Username"
+                class="border p-2 rounded mb-4 w-full"
+                required
+            />
+            <input
+                type="password"
+                name="password"
+                placeholder="Password"
+                class="border p-2 rounded mb-4 w-full"
+                required
+            />
+            <button
+                type="submit"
+                class="bg-blue-500 text-white p-2 rounded w-full cursor-pointer"
+                >Login</button
+            >
+        </form>
+    </div>
+</PageLayout>
