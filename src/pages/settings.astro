@@ -394,6 +394,7 @@ const securityActions = [
                             }
 
                             <button
+                                id="delete-account-btn"
                                 class="w-full p-4 brutal-border border-accent-2 text-left hover:bg-accent-2/10 transition"
                             >
                                 <h3 class="font-bold text-accent-2">
@@ -404,10 +405,32 @@ const securityActions = [
                                     data
                                 </p>
                             </button>
+                            <p
+                                id="delete-account-status"
+                                class="text-sm font-mono text-ink/70"
+                                aria-live="polite"
+                            />
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <script>
+        const deleteBtn = document.getElementById("delete-account-btn");
+        const status = document.getElementById("delete-account-status");
+
+        deleteBtn?.addEventListener("click", () => {
+            const confirmed = confirm(
+                "This will permanently delete your account and all associated data. This cannot be undone. Continue?",
+            );
+            if (!confirmed || !status) return;
+
+            status.textContent =
+                "Account deletion requested. (Demo only — no data was actually deleted.)";
+            deleteBtn.setAttribute("disabled", "true");
+            deleteBtn.classList.add("opacity-50", "pointer-events-none");
+        });
+    </script>
 </PageLayout>
