@@ -158,26 +158,32 @@ const topUsers = [
                         </h2>
                         <div class="space-y-3">
                             {
-                                activity.map((a) => (
-                                    <div class="flex items-center justify-between p-3 brutal-border">
-                                        <div class="flex items-center space-x-3">
-                                            <div class="w-10 h-10 bg-accent-3 text-paper brutal-border flex items-center justify-center font-black">
-                                                {a.letter}
+                                activity.length === 0 ? (
+                                    <p class="text-ink/60 font-mono text-sm py-4 text-center">
+                                        No recent activity to show.
+                                    </p>
+                                ) : (
+                                    activity.map((a) => (
+                                        <div class="flex items-center justify-between p-3 brutal-border">
+                                            <div class="flex items-center space-x-3">
+                                                <div class="w-10 h-10 bg-accent-3 text-paper brutal-border flex items-center justify-center font-black">
+                                                    {a.letter}
+                                                </div>
+                                                <div>
+                                                    <p class="font-bold">
+                                                        {a.title}
+                                                    </p>
+                                                    <p class="text-ink/60 text-sm font-mono">
+                                                        {a.time}
+                                                    </p>
+                                                </div>
                                             </div>
-                                            <div>
-                                                <p class="font-bold">
-                                                    {a.title}
-                                                </p>
-                                                <p class="text-ink/60 text-sm font-mono">
-                                                    {a.time}
-                                                </p>
-                                            </div>
+                                            <span class="brutal-tag bg-accent px-2 py-1 text-xs">
+                                                {a.tag}
+                                            </span>
                                         </div>
-                                        <span class="brutal-tag bg-accent px-2 py-1 text-xs">
-                                            {a.tag}
-                                        </span>
-                                    </div>
-                                ))
+                                    ))
+                                )
                             }
                         </div>
                     </div>
