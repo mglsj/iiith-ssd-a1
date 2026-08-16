@@ -122,7 +122,11 @@ const topUsers = [
             >
                 {
                     metrics.map((m) => (
-                        <div class={`brutal-panel p-6 ${m.color}`}>
+                        <div
+                            class={`brutal-panel p-6 ${m.color}`}
+                            role="group"
+                            aria-label={`${m.label}: ${m.value}. ${m.note}`}
+                        >
                             <div class="flex items-center justify-between">
                                 <div>
                                     <p class="text-sm font-bold uppercase opacity-80">
@@ -135,7 +139,7 @@ const topUsers = [
                                         {m.note}
                                     </p>
                                 </div>
-                                <div class="opacity-30">
+                                <div class="opacity-30" aria-hidden="true">
                                     <Icon name={m.icon} class="w-14 h-14" />
                                 </div>
                             </div>
