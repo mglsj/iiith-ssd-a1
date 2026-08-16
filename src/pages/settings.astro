@@ -178,7 +178,7 @@ const securityActions = [
                             </div>
 
                             <div class="pt-4">
-                                <button class="brutal-btn px-6 py-2"
+                                <button class="brutal-btn px-6 py-2 save-btn"
                                     >Save Changes</button
                                 >
                             </div>
@@ -291,7 +291,7 @@ const securityActions = [
                             </div>
 
                             <div class="pt-4">
-                                <button class="brutal-btn px-6 py-2"
+                                <button class="brutal-btn px-6 py-2 save-btn"
                                     >Save Changes</button
                                 >
                             </div>
@@ -366,7 +366,7 @@ const securityActions = [
                             </div>
 
                             <div class="pt-4">
-                                <button class="brutal-btn px-6 py-2"
+                                <button class="brutal-btn px-6 py-2 save-btn"
                                     >Save Changes</button
                                 >
                             </div>
@@ -418,6 +418,18 @@ const securityActions = [
     </div>
 
     <script>
+        document.querySelectorAll<HTMLButtonElement>(".save-btn").forEach((btn) => {
+            const originalText = btn.textContent;
+            btn.addEventListener("click", () => {
+                btn.textContent = "Saved!";
+                btn.disabled = true;
+                setTimeout(() => {
+                    btn.textContent = originalText;
+                    btn.disabled = false;
+                }, 1500);
+            });
+        });
+
         const deleteBtn = document.getElementById("delete-account-btn");
         const status = document.getElementById("delete-account-status");
 
