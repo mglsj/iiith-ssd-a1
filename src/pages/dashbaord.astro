@@ -1,5 +1,6 @@
 ---
 import PageLayout from "@/layouts/PageLayout.astro";
+import Icon from "@/components/Icon.astro";
 
 const metrics = [
     {
@@ -7,28 +8,28 @@ const metrics = [
         value: "5,240",
         note: "↑ 12% from last month",
         color: "bg-accent-3 text-paper",
-        icon: "👥",
+        icon: "users" as const,
     },
     {
         label: "Active Courses",
         value: "127",
         note: "↑ 8% from last semester",
         color: "bg-accent text-ink",
-        icon: "📚",
+        icon: "book" as const,
     },
     {
         label: "Pending Approvals",
         value: "23",
         note: "Requires immediate action",
         color: "bg-accent-2 text-paper",
-        icon: "⏳",
+        icon: "clock" as const,
     },
     {
         label: "System Health",
         value: "99.8%",
         note: "Uptime - All systems OK",
         color: "bg-ok text-paper",
-        icon: "✓",
+        icon: "check" as const,
     },
 ];
 
@@ -134,7 +135,9 @@ const topUsers = [
                                         {m.note}
                                     </p>
                                 </div>
-                                <div class="text-5xl opacity-40">{m.icon}</div>
+                                <div class="opacity-30">
+                                    <Icon name={m.icon} class="w-14 h-14" />
+                                </div>
                             </div>
                         </div>
                     ))

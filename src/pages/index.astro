@@ -1,34 +1,35 @@
 ---
 import PageLayout from "@/layouts/PageLayout.astro";
+import Icon from "@/components/Icon.astro";
 
 const features = [
     {
-        icon: "📚",
+        icon: "book" as const,
         title: "Course Management",
         desc: "View all your enrolled courses, access course materials, and stay updated with assignments and deadlines.",
     },
     {
-        icon: "📊",
+        icon: "chart" as const,
         title: "Grade Tracking",
         desc: "Monitor your academic performance with real-time grade updates and detailed performance analytics.",
     },
     {
-        icon: "👥",
+        icon: "users" as const,
         title: "Student Network",
         desc: "Connect with classmates, form study groups, and collaborate on projects with your peers.",
     },
     {
-        icon: "📅",
+        icon: "calendar" as const,
         title: "Schedule & Events",
         desc: "Keep track of class schedules, exam dates, and important academic events all in one place.",
     },
     {
-        icon: "🎯",
+        icon: "target" as const,
         title: "Progress Insights",
         desc: "Get personalized insights into your academic progress and recommendations for improvement.",
     },
     {
-        icon: "🔔",
+        icon: "bell" as const,
         title: "Smart Notifications",
         desc: "Receive timely notifications for assignments, grades, and important announcements from instructors.",
     },
@@ -106,8 +107,8 @@ const stats = [
                     {
                         features.map((f) => (
                             <div class="brutal-panel p-8">
-                                <div class="w-16 h-16 bg-accent brutal-border flex items-center justify-center mb-4">
-                                    <span class="text-2xl">{f.icon}</span>
+                                <div class="w-16 h-16 bg-accent brutal-border flex items-center justify-center mb-4 text-ink">
+                                    <Icon name={f.icon} class="w-8 h-8" />
                                 </div>
                                 <h3 class="text-xl font-black mb-3 uppercase">
                                     {f.title}
@@ -136,8 +137,8 @@ const stats = [
                         benefits.map((b) => (
                             <div class="flex gap-4">
                                 <div class="flex-shrink-0">
-                                    <div class="flex items-center justify-center h-12 w-12 bg-accent border-[3px] border-paper text-ink text-xl font-black">
-                                        ✓
+                                    <div class="flex items-center justify-center h-12 w-12 bg-accent border-[3px] border-paper text-ink">
+                                        <Icon name="check" class="w-6 h-6" />
                                     </div>
                                 </div>
                                 <div>
