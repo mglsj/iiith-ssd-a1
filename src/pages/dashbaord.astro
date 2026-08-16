@@ -193,8 +193,16 @@ const topUsers = [
                             </button>
                         </div>
 
+                        <input
+                            type="search"
+                            id="user-search"
+                            placeholder="Search by name, email, or role..."
+                            class="brutal-input w-full px-4 py-2 text-sm mb-4"
+                            aria-label="Search users"
+                        />
+
                         <div class="overflow-x-auto">
-                            <table class="w-full text-left">
+                            <table class="w-full text-left" id="user-table">
                                 <thead
                                     class="uppercase text-sm border-b-[3px] border-ink"
                                 >
@@ -209,7 +217,9 @@ const topUsers = [
                                 <tbody class="divide-y-2 divide-ink/20">
                                     {
                                         users.map((u) => (
-                                            <tr>
+                                            <tr
+                                                data-search={`${u.name} ${u.email} ${u.role}`.toLowerCase()}
+                                            >
                                                 <td class="py-3 font-bold">
                                                     {u.name}
                                                 </td>
@@ -313,4 +323,20 @@ const topUsers = [
             </div>
         </div>
     </div>
+
+    <script>
+        const searchInput = document.getElementById(
+            "user-search",
+        ) as HTMLInputElement | null;
+        const table = document.getElementById("user-table");
+
+        searchInput?.addEventListener("input", () => {
+            const query = searchInput.value.toLowerCase().trim();
+            const rows = table?.querySelectorAll<HTMLElement>("tbody tr") ?? [];
+            rows.forEach((row) => {
+                const haystack = row.dataset.search ?? "";
+                row.style.display = haystack.includes(query) ? "" : "none";
+            });
+        });
+    </script>
 </PageLayout>
