@@ -1,47 +1,91 @@
 ---
 import PageLayout from "@/layouts/PageLayout.astro";
+
+const features = [
+    {
+        icon: "📚",
+        title: "Course Management",
+        desc: "View all your enrolled courses, access course materials, and stay updated with assignments and deadlines.",
+    },
+    {
+        icon: "📊",
+        title: "Grade Tracking",
+        desc: "Monitor your academic performance with real-time grade updates and detailed performance analytics.",
+    },
+    {
+        icon: "👥",
+        title: "Student Network",
+        desc: "Connect with classmates, form study groups, and collaborate on projects with your peers.",
+    },
+    {
+        icon: "📅",
+        title: "Schedule & Events",
+        desc: "Keep track of class schedules, exam dates, and important academic events all in one place.",
+    },
+    {
+        icon: "🎯",
+        title: "Progress Insights",
+        desc: "Get personalized insights into your academic progress and recommendations for improvement.",
+    },
+    {
+        icon: "🔔",
+        title: "Smart Notifications",
+        desc: "Receive timely notifications for assignments, grades, and important announcements from instructors.",
+    },
+];
+
+const benefits = [
+    {
+        title: "Intuitive Design",
+        desc: "Easy to navigate interface designed with students in mind.",
+    },
+    {
+        title: "Real-time Updates",
+        desc: "Stay informed with instant notifications and live data.",
+    },
+    {
+        title: "Mobile Friendly",
+        desc: "Access your portal anywhere, anytime on any device.",
+    },
+    {
+        title: "Secure & Private",
+        desc: "Your academic data is protected with enterprise-grade security.",
+    },
+];
+
+const stats = [
+    { value: "5000+", label: "Active Students" },
+    { value: "500+", label: "Courses Managed" },
+    { value: "98%", label: "User Satisfaction" },
+    { value: "24/7", label: "Support Available" },
+];
 ---
 
 <PageLayout>
-    <div class="w-full bg-gradient-to-b from-blue-50 via-white to-indigo-50">
+    <div class="w-full bg-paper">
         <!-- Hero Section -->
         <section
-            class="min-h-screen bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-600 flex items-center justify-center px-4 sm:px-6 lg:px-8 relative overflow-hidden"
+            class="min-h-[85vh] bg-ink flex items-center justify-center px-4 sm:px-6 lg:px-8 border-b-4 border-ink"
         >
-            <!-- Background Pattern -->
-            <div class="absolute inset-0 opacity-10">
-                <div
-                    class="absolute top-20 left-10 w-72 h-72 bg-white rounded-full mix-blend-multiply filter blur-3xl"
-                >
-                </div>
-                <div
-                    class="absolute top-40 right-10 w-72 h-72 bg-white rounded-full mix-blend-multiply filter blur-3xl"
-                >
-                </div>
-            </div>
-
-            <div class="max-w-5xl mx-auto text-center relative z-10">
+            <div class="max-w-5xl mx-auto text-center">
                 <h1
-                    class="text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight"
+                    class="text-5xl sm:text-6xl lg:text-7xl font-black text-paper mb-6 leading-none uppercase tracking-tight"
                 >
-                    Welcome to Student Portal
+                    Welcome to <span class="text-accent">Student Portal</span>
                 </h1>
                 <p
-                    class="text-xl sm:text-2xl text-blue-100 mb-8 max-w-3xl mx-auto"
+                    class="text-lg sm:text-xl text-paper/80 mb-10 max-w-3xl mx-auto font-mono"
                 >
                     Your complete academic companion. Manage courses, track
                     grades, and stay connected with your academic journey.
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a
-                        href="/login"
-                        class="bg-white text-indigo-600 px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition transform hover:scale-105 cursor-pointer"
-                    >
+                    <a href="/login" class="brutal-btn px-8 py-3 text-base">
                         Get Started
                     </a>
                     <a
                         href="#features"
-                        class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-indigo-600 transition transform hover:scale-105 cursor-pointer"
+                        class="brutal-btn brutal-btn-outline text-paper border-paper px-8 py-3 text-base"
                     >
                         Learn More
                     </a>
@@ -52,217 +96,59 @@ import PageLayout from "@/layouts/PageLayout.astro";
         <!-- Features Section -->
         <section id="features" class="py-20 px-4 sm:px-6 lg:px-8">
             <div class="max-w-6xl mx-auto">
-                <h2 class="text-4xl font-bold text-gray-900 text-center mb-16">
+                <h2
+                    class="text-3xl sm:text-4xl font-black text-center mb-16 uppercase tracking-tight"
+                >
                     Powerful Features
                 </h2>
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <!-- Feature 1 -->
-                    <div
-                        class="bg-white rounded-lg shadow-lg p-8 hover:shadow-xl transition transform hover:scale-105"
-                    >
-                        <div
-                            class="w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-500 rounded-lg flex items-center justify-center mb-4"
-                        >
-                            <span class="text-2xl">📚</span>
-                        </div>
-                        <h3 class="text-2xl font-bold text-gray-900 mb-3">
-                            Course Management
-                        </h3>
-                        <p class="text-gray-600">
-                            View all your enrolled courses, access course
-                            materials, and stay updated with assignments and
-                            deadlines.
-                        </p>
-                    </div>
-
-                    <!-- Feature 2 -->
-                    <div
-                        class="bg-white rounded-lg shadow-lg p-8 hover:shadow-xl transition transform hover:scale-105"
-                    >
-                        <div
-                            class="w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-500 rounded-lg flex items-center justify-center mb-4"
-                        >
-                            <span class="text-2xl">📊</span>
-                        </div>
-                        <h3 class="text-2xl font-bold text-gray-900 mb-3">
-                            Grade Tracking
-                        </h3>
-                        <p class="text-gray-600">
-                            Monitor your academic performance with real-time
-                            grade updates and detailed performance analytics.
-                        </p>
-                    </div>
-
-                    <!-- Feature 3 -->
-                    <div
-                        class="bg-white rounded-lg shadow-lg p-8 hover:shadow-xl transition transform hover:scale-105"
-                    >
-                        <div
-                            class="w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-500 rounded-lg flex items-center justify-center mb-4"
-                        >
-                            <span class="text-2xl">👥</span>
-                        </div>
-                        <h3 class="text-2xl font-bold text-gray-900 mb-3">
-                            Student Network
-                        </h3>
-                        <p class="text-gray-600">
-                            Connect with classmates, form study groups, and
-                            collaborate on projects with your peers.
-                        </p>
-                    </div>
-
-                    <!-- Feature 4 -->
-                    <div
-                        class="bg-white rounded-lg shadow-lg p-8 hover:shadow-xl transition transform hover:scale-105"
-                    >
-                        <div
-                            class="w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-500 rounded-lg flex items-center justify-center mb-4"
-                        >
-                            <span class="text-2xl">📅</span>
-                        </div>
-                        <h3 class="text-2xl font-bold text-gray-900 mb-3">
-                            Schedule & Events
-                        </h3>
-                        <p class="text-gray-600">
-                            Keep track of class schedules, exam dates, and
-                            important academic events all in one place.
-                        </p>
-                    </div>
-
-                    <!-- Feature 5 -->
-                    <div
-                        class="bg-white rounded-lg shadow-lg p-8 hover:shadow-xl transition transform hover:scale-105"
-                    >
-                        <div
-                            class="w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-500 rounded-lg flex items-center justify-center mb-4"
-                        >
-                            <span class="text-2xl">🎯</span>
-                        </div>
-                        <h3 class="text-2xl font-bold text-gray-900 mb-3">
-                            Progress Insights
-                        </h3>
-                        <p class="text-gray-600">
-                            Get personalized insights into your academic
-                            progress and recommendations for improvement.
-                        </p>
-                    </div>
-
-                    <!-- Feature 6 -->
-                    <div
-                        class="bg-white rounded-lg shadow-lg p-8 hover:shadow-xl transition transform hover:scale-105"
-                    >
-                        <div
-                            class="w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-500 rounded-lg flex items-center justify-center mb-4"
-                        >
-                            <span class="text-2xl">🔔</span>
-                        </div>
-                        <h3 class="text-2xl font-bold text-gray-900 mb-3">
-                            Smart Notifications
-                        </h3>
-                        <p class="text-gray-600">
-                            Receive timely notifications for assignments,
-                            grades, and important announcements from
-                            instructors.
-                        </p>
-                    </div>
+                    {
+                        features.map((f) => (
+                            <div class="brutal-panel p-8">
+                                <div class="w-16 h-16 bg-accent brutal-border flex items-center justify-center mb-4">
+                                    <span class="text-2xl">{f.icon}</span>
+                                </div>
+                                <h3 class="text-xl font-black mb-3 uppercase">
+                                    {f.title}
+                                </h3>
+                                <p class="text-ink/70">{f.desc}</p>
+                            </div>
+                        ))
+                    }
                 </div>
             </div>
         </section>
 
         <!-- Benefits Section -->
         <section
-            class="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-blue-50 to-indigo-50"
+            class="py-20 px-4 sm:px-6 lg:px-8 bg-ink border-y-4 border-ink"
         >
             <div class="max-w-5xl mx-auto">
-                <h2 class="text-4xl font-bold text-gray-900 text-center mb-16">
+                <h2
+                    class="text-3xl sm:text-4xl font-black text-paper text-center mb-16 uppercase tracking-tight"
+                >
                     Why Choose Student Portal?
                 </h2>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                    <div class="flex gap-4">
-                        <div class="flex-shrink-0">
-                            <div
-                                class="flex items-center justify-center h-12 w-12 rounded-md bg-indigo-600 text-white text-xl"
-                            >
-                                ✓
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    {
+                        benefits.map((b) => (
+                            <div class="flex gap-4">
+                                <div class="flex-shrink-0">
+                                    <div class="flex items-center justify-center h-12 w-12 bg-accent border-[3px] border-paper text-ink text-xl font-black">
+                                        ✓
+                                    </div>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold text-paper mb-2 uppercase">
+                                        {b.title}
+                                    </h3>
+                                    <p class="text-paper/70">{b.desc}</p>
+                                </div>
                             </div>
-                        </div>
-                        <div>
-                            <h3
-                                class="text-xl font-semibold text-gray-900 mb-2"
-                            >
-                                Intuitive Design
-                            </h3>
-                            <p class="text-gray-600">
-                                Easy to navigate interface designed with
-                                students in mind.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="flex gap-4">
-                        <div class="flex-shrink-0">
-                            <div
-                                class="flex items-center justify-center h-12 w-12 rounded-md bg-indigo-600 text-white text-xl"
-                            >
-                                ✓
-                            </div>
-                        </div>
-                        <div>
-                            <h3
-                                class="text-xl font-semibold text-gray-900 mb-2"
-                            >
-                                Real-time Updates
-                            </h3>
-                            <p class="text-gray-600">
-                                Stay informed with instant notifications and
-                                live data.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="flex gap-4">
-                        <div class="flex-shrink-0">
-                            <div
-                                class="flex items-center justify-center h-12 w-12 rounded-md bg-indigo-600 text-white text-xl"
-                            >
-                                ✓
-                            </div>
-                        </div>
-                        <div>
-                            <h3
-                                class="text-xl font-semibold text-gray-900 mb-2"
-                            >
-                                Mobile Friendly
-                            </h3>
-                            <p class="text-gray-600">
-                                Access your portal anywhere, anytime on any
-                                device.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="flex gap-4">
-                        <div class="flex-shrink-0">
-                            <div
-                                class="flex items-center justify-center h-12 w-12 rounded-md bg-indigo-600 text-white text-xl"
-                            >
-                                ✓
-                            </div>
-                        </div>
-                        <div>
-                            <h3
-                                class="text-xl font-semibold text-gray-900 mb-2"
-                            >
-                                Secure & Private
-                            </h3>
-                            <p class="text-gray-600">
-                                Your academic data is protected with
-                                enterprise-grade security.
-                            </p>
-                        </div>
-                    </div>
+                        ))
+                    }
                 </div>
             </div>
         </section>
@@ -270,19 +156,19 @@ import PageLayout from "@/layouts/PageLayout.astro";
         <!-- CTA Section -->
         <section class="py-20 px-4 sm:px-6 lg:px-8">
             <div class="max-w-4xl mx-auto">
-                <div
-                    class="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-lg shadow-lg p-12 text-center"
-                >
-                    <h2 class="text-4xl font-bold text-white mb-4">
+                <div class="brutal-panel bg-accent p-12 text-center">
+                    <h2
+                        class="text-3xl sm:text-4xl font-black mb-4 uppercase tracking-tight"
+                    >
                         Ready to Transform Your Academic Journey?
                     </h2>
-                    <p class="text-blue-100 text-xl mb-8">
-                        Join thousands of students who are already using Student
-                        Portal to succeed in their academic goals.
+                    <p class="text-ink/80 text-lg mb-8 font-mono">
+                        Join thousands of students who are already using
+                        Student Portal to succeed in their academic goals.
                     </p>
                     <a
                         href="/login"
-                        class="inline-block bg-white text-indigo-600 px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition transform hover:scale-105 cursor-pointer"
+                        class="brutal-btn bg-ink text-paper px-8 py-3 text-base"
                     >
                         Log In to Your Account
                     </a>
@@ -292,34 +178,22 @@ import PageLayout from "@/layouts/PageLayout.astro";
 
         <!-- Stats Section -->
         <section
-            class="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-blue-50 to-indigo-50"
+            class="py-20 px-4 sm:px-6 lg:px-8 border-t-4 border-ink"
         >
             <div class="max-w-6xl mx-auto">
-                <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
-                    <div>
-                        <div class="text-4xl font-bold text-indigo-600 mb-2">
-                            5000+
-                        </div>
-                        <p class="text-gray-600">Active Students</p>
-                    </div>
-                    <div>
-                        <div class="text-4xl font-bold text-indigo-600 mb-2">
-                            500+
-                        </div>
-                        <p class="text-gray-600">Courses Managed</p>
-                    </div>
-                    <div>
-                        <div class="text-4xl font-bold text-indigo-600 mb-2">
-                            98%
-                        </div>
-                        <p class="text-gray-600">User Satisfaction</p>
-                    </div>
-                    <div>
-                        <div class="text-4xl font-bold text-indigo-600 mb-2">
-                            24/7
-                        </div>
-                        <p class="text-gray-600">Support Available</p>
-                    </div>
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6 text-center">
+                    {
+                        stats.map((s) => (
+                            <div class="brutal-panel py-8 px-4">
+                                <div class="text-4xl font-black text-accent-2 mb-2">
+                                    {s.value}
+                                </div>
+                                <p class="text-ink/70 font-mono uppercase text-sm">
+                                    {s.label}
+                                </p>
+                            </div>
+                        ))
+                    }
                 </div>
             </div>
         </section>

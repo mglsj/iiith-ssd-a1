@@ -1,0 +1,42 @@
+---
+const { pathname } = Astro.url;
+
+const links = [
+    { href: "/", label: "Home" },
+    { href: "/dashbaord", label: "Dashboard" },
+    { href: "/profile", label: "Profile" },
+    { href: "/settings", label: "Settings" },
+];
+---
+
+<header class="brutal-border border-x-0 border-t-0 bg-paper sticky top-0 z-50">
+    <div
+        class="flex flex-wrap items-center justify-between gap-4 px-4 sm:px-6 py-4 max-w-7xl mx-auto"
+    >
+        <a
+            href="/"
+            class="font-mono font-black text-lg sm:text-xl uppercase tracking-tight"
+        >
+            Best<span class="text-accent-2">(est)</span> Student Portal
+        </a>
+        <nav class="flex flex-wrap items-center gap-1">
+            {
+                links.map((link) => (
+                    <a
+                        href={link.href}
+                        class={`px-3 py-2 font-bold uppercase text-sm border-2 ${
+                            pathname === link.href
+                                ? "bg-ink text-paper border-ink"
+                                : "border-transparent hover:border-ink"
+                        }`}
+                    >
+                        {link.label}
+                    </a>
+                ))
+            }
+            <a href="/login" class="brutal-btn ml-2 px-4 py-2 text-sm">
+                Login
+            </a>
+        </nav>
+    </div>
+</header>

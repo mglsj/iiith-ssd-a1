@@ -1,1 +1,133 @@
 @import "tailwindcss";
+
+@theme {
+    --color-paper: #f2f0e6;
+    --color-ink: #111111;
+    --color-accent: #f9e000;
+    --color-accent-2: #ff4d1c;
+    --color-accent-3: #3d5aff;
+    --color-ok: #1fa34a;
+}
+
+@layer base {
+    body {
+        background-color: var(--color-paper);
+        color: var(--color-ink);
+    }
+}
+
+@layer components {
+    .brutal-border {
+        border: 3px solid var(--color-ink);
+    }
+
+    .brutal-panel {
+        background: white;
+        border: 3px solid var(--color-ink);
+        box-shadow: 6px 6px 0 0 var(--color-ink);
+    }
+
+    .brutal-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        border: 3px solid var(--color-ink);
+        background: var(--color-accent);
+        color: var(--color-ink);
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.02em;
+        box-shadow: 4px 4px 0 0 var(--color-ink);
+        transition:
+            transform 0.1s ease,
+            box-shadow 0.1s ease;
+        cursor: pointer;
+    }
+
+    .brutal-btn:hover {
+        transform: translate(-2px, -2px);
+        box-shadow: 6px 6px 0 0 var(--color-ink);
+    }
+
+    .brutal-btn:active {
+        transform: translate(2px, 2px);
+        box-shadow: 1px 1px 0 0 var(--color-ink);
+    }
+
+    .brutal-btn-outline {
+        background: transparent;
+    }
+
+    .brutal-btn-danger {
+        background: var(--color-accent-2);
+        color: white;
+    }
+
+    .brutal-input {
+        border: 3px solid var(--color-ink);
+        background: white;
+        font-weight: 600;
+        border-radius: 0;
+    }
+
+    .brutal-input:focus {
+        outline: none;
+        box-shadow: 4px 4px 0 0 var(--color-ink);
+    }
+
+    .brutal-input:disabled {
+        background: #e5e2d6;
+        color: #6b6b6b;
+    }
+
+    .brutal-tag {
+        display: inline-flex;
+        border: 2px solid var(--color-ink);
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.02em;
+    }
+
+    .brutal-checkbox {
+        appearance: none;
+        border: 3px solid var(--color-ink);
+        border-radius: 0;
+        background: white;
+        cursor: pointer;
+        position: relative;
+    }
+
+    .brutal-checkbox:checked {
+        background: var(--color-accent);
+    }
+
+    .brutal-checkbox:checked::after {
+        content: "X";
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 900;
+        font-size: 0.75rem;
+        line-height: 1;
+    }
+
+    .brutal-radio {
+        appearance: none;
+        border: 3px solid var(--color-ink);
+        border-radius: 9999px;
+        background: white;
+        cursor: pointer;
+        position: relative;
+    }
+
+    .brutal-radio:checked::after {
+        content: "";
+        position: absolute;
+        inset: 2px;
+        border-radius: 9999px;
+        background: var(--color-ink);
+    }
+}

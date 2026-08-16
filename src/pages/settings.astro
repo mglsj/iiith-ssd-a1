@@ -1,16 +1,81 @@
 ---
 import PageLayout from "@/layouts/PageLayout.astro";
+
+const navItems = [
+    { href: "#account", label: "Account", active: true },
+    { href: "#privacy", label: "Privacy" },
+    { href: "#notifications", label: "Notifications" },
+    { href: "#academic", label: "Academic" },
+    { href: "#appearance", label: "Appearance" },
+    { href: "#security", label: "Security" },
+];
+
+const privacyToggles = [
+    {
+        title: "Profile Visibility",
+        desc: "Allow other students to view your profile",
+        checked: true,
+    },
+    {
+        title: "Show GPA Publicly",
+        desc: "Display your GPA on your profile",
+        checked: false,
+    },
+    {
+        title: "Allow Messages from Classmates",
+        desc: "Let other students send you messages",
+        checked: true,
+    },
+];
+
+const notificationToggles = [
+    {
+        title: "Email Notifications",
+        desc: "Receive email for important updates",
+        checked: true,
+    },
+    {
+        title: "Assignment Reminders",
+        desc: "Get notified before assignment deadlines",
+        checked: true,
+    },
+    {
+        title: "Grade Updates",
+        desc: "Notify when grades are posted",
+        checked: true,
+    },
+    {
+        title: "Course Announcements",
+        desc: "Receive course updates and announcements",
+        checked: true,
+    },
+];
+
+const securityActions = [
+    {
+        title: "Change Password",
+        desc: "Update your password regularly for better security",
+    },
+    {
+        title: "Two-Factor Authentication",
+        desc: "Add an extra layer of security to your account",
+    },
+    {
+        title: "Active Sessions",
+        desc: "View and manage your active login sessions",
+    },
+];
 ---
 
 <PageLayout>
-    <div
-        class="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 py-12 px-4 sm:px-6 lg:px-8"
-    >
+    <div class="flex-auto py-12 px-4 sm:px-6 lg:px-8">
         <div class="max-w-5xl mx-auto">
             <!-- Settings Header -->
             <div class="mb-8">
-                <h1 class="text-4xl font-bold text-gray-900">Settings</h1>
-                <p class="text-gray-600 mt-2">
+                <h1 class="text-3xl sm:text-4xl font-black uppercase tracking-tight">
+                    Settings
+                </h1>
+                <p class="mt-2 font-mono text-sm text-ink/70">
                     Manage your account and preferences
                 </p>
             </div>
@@ -18,41 +83,25 @@ import PageLayout from "@/layouts/PageLayout.astro";
             <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
                 <!-- Settings Sidebar Navigation -->
                 <div class="lg:col-span-1">
-                    <div class="bg-white rounded-lg shadow p-6 sticky top-6">
-                        <h2 class="text-lg font-semibold text-gray-900 mb-4">
+                    <div class="brutal-panel p-6 sticky top-24">
+                        <h2 class="text-lg font-black mb-4 uppercase">
                             Settings Menu
                         </h2>
-                        <nav class="space-y-2">
-                            <a
-                                href="#account"
-                                class="block px-4 py-2 bg-indigo-50 text-indigo-600 rounded-lg font-medium"
-                                >Account</a
-                            >
-                            <a
-                                href="#privacy"
-                                class="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg"
-                                >Privacy</a
-                            >
-                            <a
-                                href="#notifications"
-                                class="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg"
-                                >Notifications</a
-                            >
-                            <a
-                                href="#academic"
-                                class="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg"
-                                >Academic</a
-                            >
-                            <a
-                                href="#appearance"
-                                class="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg"
-                                >Appearance</a
-                            >
-                            <a
-                                href="#security"
-                                class="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg"
-                                >Security</a
-                            >
+                        <nav class="space-y-1">
+                            {
+                                navItems.map((item) => (
+                                    <a
+                                        href={item.href}
+                                        class={`block px-4 py-2 font-bold text-sm uppercase border-2 ${
+                                            item.active
+                                                ? "bg-ink text-paper border-ink"
+                                                : "border-transparent hover:border-ink"
+                                        }`}
+                                    >
+                                        {item.label}
+                                    </a>
+                                ))
+                            }
                         </nav>
                     </div>
                 </div>
@@ -60,9 +109,9 @@ import PageLayout from "@/layouts/PageLayout.astro";
                 <!-- Settings Content -->
                 <div class="lg:col-span-3 space-y-6">
                     <!-- Account Settings -->
-                    <div id="account" class="bg-white rounded-lg shadow p-6">
+                    <div id="account" class="brutal-panel p-6">
                         <h2
-                            class="text-2xl font-bold text-gray-900 mb-6 pb-4 border-b border-gray-200"
+                            class="text-2xl font-black mb-6 pb-4 uppercase border-b-[3px] border-ink"
                         >
                             Account Settings
                         </h2>
@@ -70,59 +119,58 @@ import PageLayout from "@/layouts/PageLayout.astro";
                         <div class="space-y-6">
                             <div>
                                 <label
-                                    class="block text-sm font-semibold text-gray-900 mb-2"
+                                    class="block text-sm font-bold uppercase mb-2"
                                     >Full Name</label
                                 >
                                 <input
                                     type="text"
                                     value="Alex Johnson"
-                                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                                    class="brutal-input w-full px-4 py-2"
                                 />
                             </div>
 
                             <div>
                                 <label
-                                    class="block text-sm font-semibold text-gray-900 mb-2"
+                                    class="block text-sm font-bold uppercase mb-2"
                                     >Email Address</label
                                 >
                                 <input
                                     type="email"
                                     value="alex.johnson@iiit.ac.in"
-                                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                                    class="brutal-input w-full px-4 py-2"
                                 />
                             </div>
 
                             <div>
                                 <label
-                                    class="block text-sm font-semibold text-gray-900 mb-2"
+                                    class="block text-sm font-bold uppercase mb-2"
                                     >Roll Number</label
                                 >
                                 <input
                                     type="text"
                                     value="2026201063"
                                     disabled
-                                    class="w-full px-4 py-2 border border-gray-300 rounded-lg bg-gray-50 text-gray-600"
+                                    class="brutal-input w-full px-4 py-2"
                                 />
-                                <p class="text-xs text-gray-500 mt-1">
+                                <p class="text-xs text-ink/60 mt-1 font-mono">
                                     Roll number cannot be changed
                                 </p>
                             </div>
 
                             <div>
                                 <label
-                                    class="block text-sm font-semibold text-gray-900 mb-2"
+                                    class="block text-sm font-bold uppercase mb-2"
                                     >Phone Number</label
                                 >
                                 <input
                                     type="tel"
                                     placeholder="+91-XXXXXXXXXX"
-                                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                                    class="brutal-input w-full px-4 py-2"
                                 />
                             </div>
 
                             <div class="pt-4">
-                                <button
-                                    class="bg-indigo-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-indigo-700 transition"
+                                <button class="brutal-btn px-6 py-2"
                                     >Save Changes</button
                                 >
                             </div>
@@ -130,174 +178,75 @@ import PageLayout from "@/layouts/PageLayout.astro";
                     </div>
 
                     <!-- Privacy Settings -->
-                    <div id="privacy" class="bg-white rounded-lg shadow p-6">
+                    <div id="privacy" class="brutal-panel p-6">
                         <h2
-                            class="text-2xl font-bold text-gray-900 mb-6 pb-4 border-b border-gray-200"
+                            class="text-2xl font-black mb-6 pb-4 uppercase border-b-[3px] border-ink"
                         >
                             Privacy Settings
                         </h2>
 
-                        <div class="space-y-5">
-                            <div
-                                class="flex items-center justify-between p-4 border border-gray-200 rounded-lg"
-                            >
-                                <div>
-                                    <h3 class="font-semibold text-gray-900">
-                                        Profile Visibility
-                                    </h3>
-                                    <p class="text-sm text-gray-600">
-                                        Allow other students to view your
-                                        profile
-                                    </p>
-                                </div>
-                                <label class="flex items-center cursor-pointer">
-                                    <input
-                                        type="checkbox"
-                                        checked
-                                        class="w-5 h-5 text-indigo-600 rounded"
-                                    />
-                                </label>
-                            </div>
-
-                            <div
-                                class="flex items-center justify-between p-4 border border-gray-200 rounded-lg"
-                            >
-                                <div>
-                                    <h3 class="font-semibold text-gray-900">
-                                        Show GPA Publicly
-                                    </h3>
-                                    <p class="text-sm text-gray-600">
-                                        Display your GPA on your profile
-                                    </p>
-                                </div>
-                                <label class="flex items-center cursor-pointer">
-                                    <input
-                                        type="checkbox"
-                                        class="w-5 h-5 text-indigo-600 rounded"
-                                    />
-                                </label>
-                            </div>
-
-                            <div
-                                class="flex items-center justify-between p-4 border border-gray-200 rounded-lg"
-                            >
-                                <div>
-                                    <h3 class="font-semibold text-gray-900">
-                                        Allow Messages from Classmates
-                                    </h3>
-                                    <p class="text-sm text-gray-600">
-                                        Let other students send you messages
-                                    </p>
-                                </div>
-                                <label class="flex items-center cursor-pointer">
-                                    <input
-                                        type="checkbox"
-                                        checked
-                                        class="w-5 h-5 text-indigo-600 rounded"
-                                    />
-                                </label>
-                            </div>
+                        <div class="space-y-4">
+                            {
+                                privacyToggles.map((t) => (
+                                    <div class="flex items-center justify-between p-4 brutal-border">
+                                        <div>
+                                            <h3 class="font-bold">
+                                                {t.title}
+                                            </h3>
+                                            <p class="text-sm text-ink/70">
+                                                {t.desc}
+                                            </p>
+                                        </div>
+                                        <label class="flex items-center cursor-pointer">
+                                            <input
+                                                type="checkbox"
+                                                checked={t.checked}
+                                                class="brutal-checkbox w-6 h-6"
+                                            />
+                                        </label>
+                                    </div>
+                                ))
+                            }
                         </div>
                     </div>
 
                     <!-- Notification Settings -->
-                    <div
-                        id="notifications"
-                        class="bg-white rounded-lg shadow p-6"
-                    >
+                    <div id="notifications" class="brutal-panel p-6">
                         <h2
-                            class="text-2xl font-bold text-gray-900 mb-6 pb-4 border-b border-gray-200"
+                            class="text-2xl font-black mb-6 pb-4 uppercase border-b-[3px] border-ink"
                         >
                             Notification Preferences
                         </h2>
 
-                        <div class="space-y-5">
-                            <div
-                                class="flex items-center justify-between p-4 border border-gray-200 rounded-lg"
-                            >
-                                <div>
-                                    <h3 class="font-semibold text-gray-900">
-                                        Email Notifications
-                                    </h3>
-                                    <p class="text-sm text-gray-600">
-                                        Receive email for important updates
-                                    </p>
-                                </div>
-                                <label class="flex items-center cursor-pointer">
-                                    <input
-                                        type="checkbox"
-                                        checked
-                                        class="w-5 h-5 text-indigo-600 rounded"
-                                    />
-                                </label>
-                            </div>
-
-                            <div
-                                class="flex items-center justify-between p-4 border border-gray-200 rounded-lg"
-                            >
-                                <div>
-                                    <h3 class="font-semibold text-gray-900">
-                                        Assignment Reminders
-                                    </h3>
-                                    <p class="text-sm text-gray-600">
-                                        Get notified before assignment deadlines
-                                    </p>
-                                </div>
-                                <label class="flex items-center cursor-pointer">
-                                    <input
-                                        type="checkbox"
-                                        checked
-                                        class="w-5 h-5 text-indigo-600 rounded"
-                                    />
-                                </label>
-                            </div>
-
-                            <div
-                                class="flex items-center justify-between p-4 border border-gray-200 rounded-lg"
-                            >
-                                <div>
-                                    <h3 class="font-semibold text-gray-900">
-                                        Grade Updates
-                                    </h3>
-                                    <p class="text-sm text-gray-600">
-                                        Notify when grades are posted
-                                    </p>
-                                </div>
-                                <label class="flex items-center cursor-pointer">
-                                    <input
-                                        type="checkbox"
-                                        checked
-                                        class="w-5 h-5 text-indigo-600 rounded"
-                                    />
-                                </label>
-                            </div>
-
-                            <div
-                                class="flex items-center justify-between p-4 border border-gray-200 rounded-lg"
-                            >
-                                <div>
-                                    <h3 class="font-semibold text-gray-900">
-                                        Course Announcements
-                                    </h3>
-                                    <p class="text-sm text-gray-600">
-                                        Receive course updates and announcements
-                                    </p>
-                                </div>
-                                <label class="flex items-center cursor-pointer">
-                                    <input
-                                        type="checkbox"
-                                        checked
-                                        class="w-5 h-5 text-indigo-600 rounded"
-                                    />
-                                </label>
-                            </div>
+                        <div class="space-y-4">
+                            {
+                                notificationToggles.map((t) => (
+                                    <div class="flex items-center justify-between p-4 brutal-border">
+                                        <div>
+                                            <h3 class="font-bold">
+                                                {t.title}
+                                            </h3>
+                                            <p class="text-sm text-ink/70">
+                                                {t.desc}
+                                            </p>
+                                        </div>
+                                        <label class="flex items-center cursor-pointer">
+                                            <input
+                                                type="checkbox"
+                                                checked={t.checked}
+                                                class="brutal-checkbox w-6 h-6"
+                                            />
+                                        </label>
+                                    </div>
+                                ))
+                            }
                         </div>
                     </div>
 
                     <!-- Academic Settings -->
-                    <div id="academic" class="bg-white rounded-lg shadow p-6">
+                    <div id="academic" class="brutal-panel p-6">
                         <h2
-                            class="text-2xl font-bold text-gray-900 mb-6 pb-4 border-b border-gray-200"
+                            class="text-2xl font-black mb-6 pb-4 uppercase border-b-[3px] border-ink"
                         >
                             Academic Settings
                         </h2>
@@ -305,27 +254,24 @@ import PageLayout from "@/layouts/PageLayout.astro";
                         <div class="space-y-6">
                             <div>
                                 <label
-                                    class="block text-sm font-semibold text-gray-900 mb-2"
+                                    class="block text-sm font-bold uppercase mb-2"
                                     >Preferred Major</label
                                 >
-                                <select
-                                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                                >
+                                <select class="brutal-input w-full px-4 py-2">
                                     <option selected>Computer Science</option>
                                     <option>Information Technology</option>
-                                    <option>Electronics & Communication</option>
+                                    <option>Electronics & Communication</option
+                                    >
                                     <option>Mechanical Engineering</option>
                                 </select>
                             </div>
 
                             <div>
                                 <label
-                                    class="block text-sm font-semibold text-gray-900 mb-2"
+                                    class="block text-sm font-bold uppercase mb-2"
                                     >Grade Scale</label
                                 >
-                                <select
-                                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                                >
+                                <select class="brutal-input w-full px-4 py-2">
                                     <option selected
                                         >10.0 Scale (IIIT Standard)</option
                                     >
@@ -335,8 +281,7 @@ import PageLayout from "@/layouts/PageLayout.astro";
                             </div>
 
                             <div class="pt-4">
-                                <button
-                                    class="bg-indigo-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-indigo-700 transition"
+                                <button class="brutal-btn px-6 py-2"
                                     >Save Changes</button
                                 >
                             </div>
@@ -344,9 +289,9 @@ import PageLayout from "@/layouts/PageLayout.astro";
                     </div>
 
                     <!-- Appearance Settings -->
-                    <div id="appearance" class="bg-white rounded-lg shadow p-6">
+                    <div id="appearance" class="brutal-panel p-6">
                         <h2
-                            class="text-2xl font-bold text-gray-900 mb-6 pb-4 border-b border-gray-200"
+                            class="text-2xl font-black mb-6 pb-4 uppercase border-b-[3px] border-ink"
                         >
                             Appearance
                         </h2>
@@ -354,10 +299,10 @@ import PageLayout from "@/layouts/PageLayout.astro";
                         <div class="space-y-6">
                             <div>
                                 <label
-                                    class="block text-sm font-semibold text-gray-900 mb-4"
+                                    class="block text-sm font-bold uppercase mb-4"
                                     >Theme</label
                                 >
-                                <div class="flex gap-4">
+                                <div class="flex flex-wrap gap-4">
                                     <label
                                         class="flex items-center cursor-pointer"
                                     >
@@ -365,9 +310,9 @@ import PageLayout from "@/layouts/PageLayout.astro";
                                             type="radio"
                                             name="theme"
                                             checked
-                                            class="w-4 h-4"
+                                            class="brutal-radio w-5 h-5"
                                         />
-                                        <span class="ml-2 text-gray-700"
+                                        <span class="ml-2 font-medium"
                                             >Light Mode</span
                                         >
                                     </label>
@@ -377,9 +322,9 @@ import PageLayout from "@/layouts/PageLayout.astro";
                                         <input
                                             type="radio"
                                             name="theme"
-                                            class="w-4 h-4"
+                                            class="brutal-radio w-5 h-5"
                                         />
-                                        <span class="ml-2 text-gray-700"
+                                        <span class="ml-2 font-medium"
                                             >Dark Mode</span
                                         >
                                     </label>
@@ -389,9 +334,9 @@ import PageLayout from "@/layouts/PageLayout.astro";
                                         <input
                                             type="radio"
                                             name="theme"
-                                            class="w-4 h-4"
+                                            class="brutal-radio w-5 h-5"
                                         />
-                                        <span class="ml-2 text-gray-700"
+                                        <span class="ml-2 font-medium"
                                             >Auto (System)</span
                                         >
                                     </label>
@@ -400,12 +345,10 @@ import PageLayout from "@/layouts/PageLayout.astro";
 
                             <div>
                                 <label
-                                    class="block text-sm font-semibold text-gray-900 mb-4"
+                                    class="block text-sm font-bold uppercase mb-4"
                                     >Display Language</label
                                 >
-                                <select
-                                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                                >
+                                <select class="brutal-input w-full px-4 py-2">
                                     <option selected>English</option>
                                     <option>Hindi</option>
                                     <option>Spanish</option>
@@ -413,8 +356,7 @@ import PageLayout from "@/layouts/PageLayout.astro";
                             </div>
 
                             <div class="pt-4">
-                                <button
-                                    class="bg-indigo-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-indigo-700 transition"
+                                <button class="brutal-btn px-6 py-2"
                                     >Save Changes</button
                                 >
                             </div>
@@ -422,57 +364,34 @@ import PageLayout from "@/layouts/PageLayout.astro";
                     </div>
 
                     <!-- Security Settings -->
-                    <div id="security" class="bg-white rounded-lg shadow p-6">
+                    <div id="security" class="brutal-panel p-6">
                         <h2
-                            class="text-2xl font-bold text-gray-900 mb-6 pb-4 border-b border-gray-200"
+                            class="text-2xl font-black mb-6 pb-4 uppercase border-b-[3px] border-ink"
                         >
                             Security
                         </h2>
 
                         <div class="space-y-4">
-                            <button
-                                class="w-full p-4 border border-gray-300 rounded-lg text-left hover:bg-gray-50 transition"
-                            >
-                                <h3 class="font-semibold text-gray-900">
-                                    Change Password
-                                </h3>
-                                <p class="text-sm text-gray-600">
-                                    Update your password regularly for better
-                                    security
-                                </p>
-                            </button>
+                            {
+                                securityActions.map((a) => (
+                                    <button class="w-full p-4 brutal-border text-left hover:bg-accent/20 transition">
+                                        <h3 class="font-bold">{a.title}</h3>
+                                        <p class="text-sm text-ink/70">
+                                            {a.desc}
+                                        </p>
+                                    </button>
+                                ))
+                            }
 
                             <button
-                                class="w-full p-4 border border-gray-300 rounded-lg text-left hover:bg-gray-50 transition"
+                                class="w-full p-4 brutal-border border-accent-2 text-left hover:bg-accent-2/10 transition"
                             >
-                                <h3 class="font-semibold text-gray-900">
-                                    Two-Factor Authentication
-                                </h3>
-                                <p class="text-sm text-gray-600">
-                                    Add an extra layer of security to your
-                                    account
-                                </p>
-                            </button>
-
-                            <button
-                                class="w-full p-4 border border-gray-300 rounded-lg text-left hover:bg-gray-50 transition"
-                            >
-                                <h3 class="font-semibold text-gray-900">
-                                    Active Sessions
-                                </h3>
-                                <p class="text-sm text-gray-600">
-                                    View and manage your active login sessions
-                                </p>
-                            </button>
-
-                            <button
-                                class="w-full p-4 border border-red-300 rounded-lg text-left hover:bg-red-50 transition"
-                            >
-                                <h3 class="font-semibold text-red-600">
+                                <h3 class="font-bold text-accent-2">
                                     Delete Account
                                 </h3>
-                                <p class="text-sm text-red-600">
-                                    Permanently delete your account and all data
+                                <p class="text-sm text-accent-2">
+                                    Permanently delete your account and all
+                                    data
                                 </p>
                             </button>
                         </div>
