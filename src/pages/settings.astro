@@ -2,7 +2,7 @@
 import PageLayout from "@/layouts/PageLayout.astro";
 
 const navItems = [
-    { href: "#account", label: "Account", active: true },
+    { href: "#account", label: "Account" },
     { href: "#privacy", label: "Privacy" },
     { href: "#notifications", label: "Notifications" },
     { href: "#academic", label: "Academic" },
@@ -89,11 +89,12 @@ const securityActions = [
                         </h2>
                         <nav class="space-y-1">
                             {
-                                navItems.map((item) => (
+                                navItems.map((item, i) => (
                                     <a
                                         href={item.href}
-                                        class={`block px-4 py-2 font-bold text-sm uppercase border-2 ${
-                                            item.active
+                                        data-nav-link
+                                        class={`nav-link block px-4 py-2 font-bold text-sm uppercase border-2 ${
+                                            i === 0
                                                 ? "bg-ink text-paper border-ink"
                                                 : "border-transparent hover:border-ink"
                                         }`}
@@ -418,6 +419,43 @@ const securityActions = [
     </div>
 
     <script>
+        const navLinks = document.querySelectorAll<HTMLAnchorElement>(
+            "[data-nav-link]",
+        );
+        const sections = Array.from(navLinks)
+            .map((link) => document.getElementById(link.hash.slice(1)))
+            .filter((el): el is HTMLElement => el !== null);
+
+        const setActiveLink = (id: string) => {
+            navLinks.forEach((link) => {
+                const isActive = link.hash === `#${id}`;
+                link.classList.toggle("bg-ink", isActive);
+                link.classList.toggle("text-paper", isActive);
+                link.classList.toggle("border-ink", isActive);
+                link.classList.toggle("border-transparent", !isActive);
+            });
+        };
+
+        const triggerLine = 120;
+        const updateActiveSection = () => {
+            const atBottom =
+                window.innerHeight + window.scrollY >=
+                document.documentElement.scrollHeight - 2;
+
+            let current = sections[0];
+            for (const section of sections) {
+                if (section.getBoundingClientRect().top <= triggerLine) {
+                    current = section;
+                }
+            }
+            setActiveLink(atBottom ? sections[sections.length - 1].id : current.id);
+        };
+
+        window.addEventListener("scroll", updateActiveSection, {
+            passive: true,
+        });
+        updateActiveSection();
+
         document.querySelectorAll<HTMLButtonElement>(".save-btn").forEach((btn) => {
             const originalText = btn.textContent;
             btn.addEventListener("click", () => {
