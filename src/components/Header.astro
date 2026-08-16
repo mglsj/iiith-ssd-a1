@@ -11,7 +11,10 @@ const links = [
 ];
 ---
 
-<header class="brutal-border border-x-0 border-t-0 bg-paper sticky top-0 z-50">
+<header
+    class="brutal-border border-x-0 border-t-0 bg-paper sticky top-0 z-50"
+    transition:persist
+>
     <div
         class="flex flex-wrap items-center justify-between gap-4 px-4 sm:px-6 py-4 max-w-7xl mx-auto"
     >
@@ -26,6 +29,7 @@ const links = [
                 links.map((link) => (
                     <a
                         href={link.href}
+                        data-nav-link
                         class={`px-3 py-2 font-bold uppercase text-sm border-2 ${
                             pathname === link.href
                                 ? "bg-ink text-paper border-ink"
@@ -42,3 +46,19 @@ const links = [
         </nav>
     </div>
 </header>
+
+<script>
+    function syncActiveNavLink() {
+        document
+            .querySelectorAll<HTMLAnchorElement>("header [data-nav-link]")
+            .forEach((link) => {
+                const isActive = link.getAttribute("href") === location.pathname;
+                link.classList.toggle("bg-ink", isActive);
+                link.classList.toggle("text-paper", isActive);
+                link.classList.toggle("border-ink", isActive);
+                link.classList.toggle("border-transparent", !isActive);
+            });
+    }
+
+    document.addEventListener("astro:page-load", syncActiveNavLink);
+</script>

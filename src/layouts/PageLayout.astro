@@ -6,12 +6,13 @@ import Header from "@/components/Header.astro";
 <BaseLayout>
     <Header />
 
-    <main class="flex flex-auto flex-col">
+    <main class="flex flex-auto flex-col" transition:animate="slide">
         <slot />
     </main>
 
     <footer
         class="brutal-border border-x-0 border-b-0 bg-ink text-paper p-4 flex justify-center font-mono text-sm"
+        transition:persist
     >
         <a
             href="https://github.com/mglsj"
