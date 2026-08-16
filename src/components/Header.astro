@@ -1,11 +1,13 @@
 ---
+import { withBase } from "@/lib/paths";
+
 const { pathname } = Astro.url;
 
 const links = [
-    { href: "/", label: "Home" },
-    { href: "/dashbaord", label: "Dashboard" },
-    { href: "/profile", label: "Profile" },
-    { href: "/settings", label: "Settings" },
+    { href: withBase("/"), label: "Home" },
+    { href: withBase("/dashbaord/"), label: "Dashboard" },
+    { href: withBase("/profile/"), label: "Profile" },
+    { href: withBase("/settings/"), label: "Settings" },
 ];
 ---
 
@@ -14,7 +16,7 @@ const links = [
         class="flex flex-wrap items-center justify-between gap-4 px-4 sm:px-6 py-4 max-w-7xl mx-auto"
     >
         <a
-            href="/"
+            href={withBase("/")}
             class="font-mono font-black text-lg sm:text-xl uppercase tracking-tight"
         >
             Best<span class="text-accent-2">(est)</span> Student Portal
@@ -34,7 +36,7 @@ const links = [
                     </a>
                 ))
             }
-            <a href="/login" class="brutal-btn ml-2 px-4 py-2 text-sm">
+            <a href={withBase("/login/")} class="brutal-btn ml-2 px-4 py-2 text-sm">
                 Login
             </a>
         </nav>

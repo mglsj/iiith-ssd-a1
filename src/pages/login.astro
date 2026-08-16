@@ -1,5 +1,6 @@
 ---
 import PageLayout from "@/layouts/PageLayout.astro";
+import { withBase } from "@/lib/paths";
 ---
 
 <PageLayout>
@@ -86,7 +87,7 @@ import PageLayout from "@/layouts/PageLayout.astro";
                     <p class="text-center text-sm mt-4">
                         Don't have an account?
                         <a
-                            href="/signup"
+                            href={withBase("/signup/")}
                             class="font-bold underline underline-offset-4"
                         >
                             Sign up here
