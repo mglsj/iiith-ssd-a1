@@ -293,11 +293,16 @@ const topUsers = [
                                                 {s.status}
                                             </span>
                                         </div>
-                                        <div class="w-full brutal-border h-3 bg-paper">
-                                            <div
-                                                class={`h-full ${s.status === "Online" ? "bg-ok" : "bg-accent-2"}`}
-                                                style={`width: ${s.pct}%;`}
-                                            />
+                                        <div class="flex items-center gap-2">
+                                            <div class="w-full brutal-border h-3 bg-paper">
+                                                <div
+                                                    class={`h-full ${s.status === "Online" ? "bg-ok" : "bg-accent-2"}`}
+                                                    style={`width: ${s.pct}%;`}
+                                                />
+                                            </div>
+                                            <span class="text-xs font-mono text-ink/60 w-10 text-right">
+                                                {s.pct}%
+                                            </span>
                                         </div>
                                     </div>
                                 ))
